@@ -1,99 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RecyShred | Home</title>
 <link rel="stylesheet" href="style.css">
+
 <style>
-  /* Center QR code section */
-  #qr-section {
-    display: flex;
-    flex-direction: column;
+  /* ✅ Kiosk (QR) screen */
+  #qr-section{
+    min-height: 100vh;
+    display: none;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     text-align: center;
+    padding: 30px;
   }
-  canvas {
-    margin-top: 20px;
+  .kiosk-wrap{
+    width: min(520px, 92vw);
+    padding: 28px 22px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(8px);
+  }
+  .kiosk-logo{
+    width: 90px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+  }
+  .kiosk-wrap h1{
+    margin: 0;
+    font-size: 2rem;
+  }
+  .kiosk-sub{
+    margin: 10px 0 18px;
+    opacity: 0.9;
+  }
+  #userQR{
+    margin: 10px auto 0;
+    display: block;
+  }
+  .kiosk-url{
+    margin-top: 14px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+    word-break: break-all;
+  }
+  .kiosk-hint{
+    margin-top: 18px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+  .kiosk-hint code{
+    user-select: all;
   }
 </style>
 </head>
+
 <body>
 
-<div id="qr-section" style="display:none;">
-  <h1>RecyShred Access</h1>
-  <p id="qr-msg"></p>
-  <canvas id="userQR" style="display:none;"></canvas>
-  <canvas id="adminQR" style="display:none;"></canvas>
-</div>
+<!-- ✅ QR / Kiosk screen (PC default) -->
+<div id="qr-section">
+  <div class="kiosk-wrap">
+    <img src="logo.png" class="kiosk-logo" alt="RecyShred Logo">
+    <h1>RecyShred</h1>
+    <p class="kiosk-sub">Scan to open on your phone</p>
 
-<!-- Original site content (hidden for mobile users) -->
-<div id="site-content">
-<header>
-  <img src="logo.png" class="site-logo" alt="RecyShred Logo">
-  <h1>RecyShred</h1>
-  <p>Turn Waste into Worth</p>
-  <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
-</header>
+    <canvas id="userQR"></canvas>
 
-<nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="dashboard.html">Dashboard</a>
-  <a href="binstatus.html">Bin Status</a>
-</nav>
+    <p id="kiosk-url" class="kiosk-url"></p>
 
-<div class="container">
-
-  <section class="section hero-section">
-    <h2>Welcome to <strong>RecyShred</strong></h2>
-    <p>
-      Our smart Recycling Bin rewards users with coins based on the
-      <strong>weight of recyclable materials</strong>.
+    <p class="kiosk-hint">
+      Admin PC access:
+      <br><code>#admin=MY_SECURE_ADMIN_TOKEN</code>
     </p>
-    <a href="dashboard.html" class="bin-btn">Go to Dashboard</a>
-  </section>
-
-  <section class="section">
-    <h2>How It Works</h2>
-    <div class="card-grid">
-
-      <div class="card hover-gif">
-        <div class="gif-wrap">
-          <img src="insert.png" class="card-gif static" alt="Insert Material">
-          <img src="insert.gif" class="card-gif animated" alt="Insert Material">
-        </div>
-        <h3>Insert Material</h3>
-        <p>Insert recyclable plastic bottles and cans.</p>
-      </div>  
-
-      <div class="card hover-gif">
-        <div class="gif-wrap">
-          <img src="shred.png" class="card-gif static" alt="Shred Material">
-          <img src="shred.gif" class="card-gif animated" alt="Shred Material">
-        </div>
-        <h3>Shred & Measure</h3>
-        <p>The system shreds and measures the material.</p>
-      </div>
-
-      <div class="card hover-gif">
-        <div class="gif-wrap">
-          <img src="redeem.png" class="card-gif static" alt="Redeem Rewards">
-          <img src="redeem.gif" class="card-gif animated" alt="Redeem Rewards">
-        </div>
-        <h3>Redeem Rewards</h3>
-        <p>Check your dashboard to view your balance, and use the machine to collect your money.</p>
-      </div>
-
-    </div>
-  </section>
-
-</div>
+  </div>
 </div>
 
+<!-- ✅ Your original site content (Admin PC can see this) -->
+<div id="site-content">
+  <header>
+    <img src="logo.png" class="site-logo" alt="RecyShred Logo">
+    <h1>RecyShred</h1>
+    <p>Turn Waste into Worth</p>
+    <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+  </header>
+
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="binstatus.html">Bin Status</a>
+  </nav>
+
+  <div class="container">
+
+    <section class="section hero-section">
+      <h2>Welcome to <strong>RecyShred</strong></h2>
+      <p>
+        Our smart Recycling Bin rewards users with coins based on the
+        <strong>weight of recyclable materials</strong>.
+      </p>
+      <a href="dashboard.html" class="bin-btn">Go to Dashboard</a>
+    </section>
+
+    <section class="section">
+      <h2>How It Works</h2>
+      <div class="card-grid">
+
+        <div class="card hover-gif">
+          <div class="gif-wrap">
+            <img src="insert.png" class="card-gif static" alt="Insert Material">
+            <img src="insert.gif" class="card-gif animated" alt="Insert Material">
+          </div>
+          <h3>Insert Material</h3>
+          <p>Insert recyclable plastic bottles and cans.</p>
+        </div>
+
+        <div class="card hover-gif">
+          <div class="gif-wrap">
+            <img src="shred.png" class="card-gif static" alt="Shred Material">
+            <img src="shred.gif" class="card-gif animated" alt="Shred Material">
+          </div>
+          <h3>Shred & Measure</h3>
+          <p>The system shreds and measures the material.</p>
+        </div>
+
+        <div class="card hover-gif">
+          <div class="gif-wrap">
+            <img src="redeem.png" class="card-gif static" alt="Redeem Rewards">
+            <img src="redeem.gif" class="card-gif animated" alt="Redeem Rewards">
+          </div>
+          <h3>Redeem Rewards</h3>
+          <p>Check your dashboard to view your balance, and use the machine to collect your money.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ✅ Theme toggle (kept) -->
 <script>
-  // Theme toggle
   const toggleBtn = document.getElementById("theme-toggle");
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
@@ -101,56 +151,58 @@
       toggleBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
       localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
     });
-  }
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleBtn.textContent = "☀️ Light Mode";
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️ Light Mode";
+    }
   }
 </script>
 
-<!-- QR Code Script -->
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js">
+<!-- ✅ QR library (CDN, no npm needed) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
 
-  // Device detection
+<!-- ✅ Kiosk Logic -->
+<script>
+  // ✅ Change this if you want scan to go somewhere else
+  // I set it to dashboard because it feels more "real" for users.
+  const MOBILE_URL = "https://recyshredv3.vercel.app/dashboard.html";
+
+  // ✅ Change this token to your own secret text
+  const ADMIN_TOKEN = "MY_SECURE_ADMIN_TOKEN";
+
   function isMobile() {
     return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   }
 
-  // ✅ CHANGE THIS to your real hosted link (Vercel/Netlify/IP address)
-  const BASE_URL = "https://recyshredv3.vercel.app/index.html";
-  const ADMIN_TOKEN = "MY_SECURE_ADMIN_TOKEN";
-  const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get("token");
+  function isAdminPC() {
+    return (window.location.hash || "") === "#admin=" + ADMIN_TOKEN;
+  }
 
   const qrSection = document.getElementById("qr-section");
-  const qrMsg = document.getElementById("qr-msg");
-  const userQR = document.getElementById("userQR");
-  const adminQR = document.getElementById("adminQR");
   const siteContent = document.getElementById("site-content");
+  const userQR = document.getElementById("userQR");
+  const kioskUrl = document.getElementById("kiosk-url");
 
-  // Default: hide both QR canvases
-  userQR.style.display = "none";
-  adminQR.style.display = "none";
+  if (kioskUrl) kioskUrl.textContent = MOBILE_URL;
 
+  // 📱 Phone: auto-redirect to the real site
   if (isMobile()) {
-    // ✅ MOBILE USERS: show the website normally
-    qrSection.style.display = "none";
-    siteContent.style.display = "block";
+    window.location.replace(MOBILE_URL);
   } else {
-    // ✅ DESKTOP:
-    if (token === ADMIN_TOKEN) {
-      // Admin on PC: show website
+    // 💻 PC
+    if (isAdminPC()) {
+      // Admin sees the real website
       qrSection.style.display = "none";
       siteContent.style.display = "block";
     } else {
-      // Normal PC: show QR only (so users can scan using phone)
+      // Kiosk shows only QR
       siteContent.style.display = "none";
       qrSection.style.display = "flex";
 
-      qrMsg.textContent = "Scan this QR code using your phone to open RecyShred:";
-      userQR.style.display = "block";
-
-      QRCode.toCanvas(userQR, BASE_URL, { width: 220 });
+      QRCode.toCanvas(userQR, MOBILE_URL, { width: 260 }, function (err) {
+        if (err) console.error(err);
+      });
     }
   }
 </script>

@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-  /* ✅ Kiosk (QR) screen */
   #qr-section{
     min-height: 100vh;
     display: none;
@@ -61,7 +60,6 @@
 
 <body>
 
-<!-- ✅ QR / Kiosk screen (PC default) -->
 <div id="qr-section">
   <div class="kiosk-wrap">
     <img src="logo.png" class="kiosk-logo" alt="RecyShred Logo">
@@ -74,12 +72,12 @@
 
     <p class="kiosk-hint">
       Admin PC access:
-      <br><code>#admin=MY_SECURE_ADMIN_TOKEN</code>
+      <br><code>#key=MY_ADMIN_KEY</code>
     </p>
+    <p class="kiosk-hint">If you’re the admin, ask the developer for the key.</p>
   </div>
 </div>
 
-<!-- ✅ Your original site content (Admin PC can see this) -->
 <div id="site-content">
   <header>
     <img src="logo.png" class="site-logo" alt="RecyShred Logo">

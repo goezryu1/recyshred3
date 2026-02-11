@@ -158,17 +158,12 @@
     }
   }
 </script>
-
-<!-- ✅ QR library (CDN, no npm needed) -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
 
-<!-- ✅ Kiosk Logic -->
+<!-- Kiosk Logic -->
 <script>
-  // ✅ Change this if you want scan to go somewhere else
-  // I set it to dashboard because it feels more "real" for users.
-  const MOBILE_URL = "https://recyshredv3.vercel.app/dashboard.html";
+  const MOBILE_URL = "https://recyshredv3.vercel.app/index.html";
 
-  // ✅ Change this token to your own secret text
   const ADMIN_TOKEN = "MY_SECURE_ADMIN_TOKEN";
 
   function isMobile() {
@@ -186,17 +181,13 @@
 
   if (kioskUrl) kioskUrl.textContent = MOBILE_URL;
 
-  // 📱 Phone: auto-redirect to the real site
   if (isMobile()) {
     window.location.replace(MOBILE_URL);
   } else {
-    // 💻 PC
     if (isAdminPC()) {
-      // Admin sees the real website
       qrSection.style.display = "none";
       siteContent.style.display = "block";
     } else {
-      // Kiosk shows only QR
       siteContent.style.display = "none";
       qrSection.style.display = "flex";
 

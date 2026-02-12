@@ -83,7 +83,7 @@
     <img src="logo.png" class="site-logo" alt="RecyShred Logo">
     <h1>RecyShred</h1>
     <p>Turn Waste into Worth</p>
-    <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+    <button id="theme-toggle" class="theme-btn">Dark Mode</button>
   </header>
 
   <nav>
@@ -140,7 +140,6 @@
   </div>
 </div>
 
-<!-- ✅ Theme toggle (kept) -->
 <script>
   const toggleBtn = document.getElementById("theme-toggle");
   if (toggleBtn) {
@@ -152,13 +151,12 @@
 
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️ Light Mode";
+      toggleBtn.textContent = "Light Mode";
     }
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
 
-<!-- Kiosk Logic -->
 <script>
   const MOBILE_URL = "https://recyshredv3.vercel.app/index.html";
 
